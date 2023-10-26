@@ -9,7 +9,7 @@ public class Driver {
         System.out.println("Yoke Project V 1.0");
 
         Driver driver = new Driver();
-        //driver.processOrder();
+        driver.setup();
         driver.runMenu();
 
     }
@@ -52,12 +52,35 @@ public class Driver {
         System.exit(0);
     }
 
-    private void addAYoke() {
-        System.out.println("Calling add a yoke");
+
+    private void addAYoke(){
+        input.nextLine();  //dummy read of String to clear the buffer - bug in Scanner class.
+
+        System.out.print("Enter the Yoke Name:  ");
+        String yokeName = input.nextLine();
+        System.out.print("Enter the Price:  ");
+        double yokePrice = input.nextDouble();
+
+        Yoke temp = new Yoke(yokeName, yokePrice);
+        boolean isAdded = shop.add(temp);
+        if (isAdded){
+            System.out.println("Yoke Added Successfully");
+        }
+        else{
+            System.out.println("No Yoke Added");
+        }
     }
 
     private void printAllYokes() {
-        System.out.println("Calling print all yokes");
+        System.out.println("List of Yokes are:");
+        System.out.println(shop.list());
+    }
+
+    private void setup(){
+        //find out from the user how many products they would like to order
+        System.out.print("How many Yokes would you like to have in your Store?  ");
+        int numberProducts = input.nextInt();
+        shop = new Shop(numberProducts);
     }
 ///////////////////////////////////////////////////////
 
