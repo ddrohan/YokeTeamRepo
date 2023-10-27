@@ -35,4 +35,19 @@ public class Shop {
             return listOfYokes;
         }
     }
+
+    public Yoke find(String name) {
+
+        Yoke foundYoke =  null;
+
+        if (!isEmpty()) {
+            for (int i = 0; i < total; i++)
+                if (yokes[i].getName().equals(name))
+                    foundYoke = yokes[i];
+        }
+        else {
+            return null;
+        }
+        return foundYoke;
+    }
 }

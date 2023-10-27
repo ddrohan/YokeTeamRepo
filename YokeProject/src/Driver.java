@@ -21,6 +21,7 @@ public class Driver {
                ---------
                   1) Add a Yoke
                   2) List All Yokes
+                  3) Find a Yoke
                   0) Exit
                ==>> """);
         int option = input.nextInt();
@@ -35,6 +36,7 @@ public class Driver {
             switch (option){
                 case 1 -> addAYoke();
                 case 2 -> printAllYokes();
+                case 3 -> findAYoke();
                 default -> System.out.println("Invalid option entered: " + option);
             }
 
@@ -50,6 +52,22 @@ public class Driver {
         //the user chose option 0, so exit the program
         System.out.println("Exiting...bye bye");
         System.exit(0);
+    }
+
+    private void findAYoke() {
+        input.nextLine();
+
+        System.out.print("Please Enter a Yoke Name to Find : ");
+        String yokeName = input.nextLine();
+
+        Yoke foundYoke = shop.find(yokeName);
+
+        if (foundYoke != null) {
+            System.out.println("The found Thing is:  " + foundYoke);
+        }
+        else{
+            System.out.println("There are no Things with the name [" + yokeName + "] in the Shop.");
+        }
     }
 
 
